@@ -27,7 +27,7 @@ const createCardHtml = (name,temp,emoji,country,newDate,wind,description) =>`
             <h5>${temp}&#8451;</h5>
             ${emoji}
             <h5>${newDate}</h5>
-          </div>
+          </div>git push
           <div class="d-flex w-100 mb-3 justify-content-between">
             <h5 class="card-subtitle text-info">${description}</h5>
             <h5 class="card-subtitle text-muted">wind ${wind} knots</h5>
