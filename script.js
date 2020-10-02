@@ -1,3 +1,26 @@
+function checkForm(form)
+  {
+    // validation fails if the input is blank
+    if(form.cityName.value == "") {
+      alert("Error: Input is empty!");
+      form.cityName.focus();
+      return false;
+    }
+
+    // regular expression to match only alphanumeric characters and spaces
+    var re = /^[\w ]+$/;
+
+    // validation fails if the input doesn't match our regular expression
+    if(!re.test(form.cityName.value)) {
+      alert("Error: Input contains invalid characters!");
+      form.cityName.focus();
+      return false;
+    }
+
+    // validation was successful
+    return true;
+  }
+
 newCity.addEventListener("submit",(event)=>{
     event.preventDefault();
     let newCity = document.querySelector('#cityName');
@@ -7,8 +30,6 @@ const apiKey = "b4cf7292e90bcd61f5eb671a54de8b10";
 const url= `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${apiKey}`;
 
 
-
-//remove 2 lines above to work
 
 const createCardHtml = (name,temp,emoji,country,newDate,wind,description) =>`
 <div class="card">
@@ -27,7 +48,7 @@ const createCardHtml = (name,temp,emoji,country,newDate,wind,description) =>`
             <h5>${temp}&#8451;</h5>
             ${emoji}
             <h5>${newDate}</h5>
-          </div>git push
+          </div>
           <div class="d-flex w-100 mb-3 justify-content-between">
             <h5 class="card-subtitle text-info">${description}</h5>
             <h5 class="card-subtitle text-muted">wind ${wind} knots</h5>
@@ -38,7 +59,7 @@ const createCardHtml = (name,temp,emoji,country,newDate,wind,description) =>`
   </div>
 
   `;
-
+  
 
 const date = new Date();
 const month = date.toLocaleString('default', { month: 'short' });
@@ -79,6 +100,7 @@ fetch(url)
     const emoji = emojis[data.weather[0].icon];
 ;
  
+
   const cardHtml= createCardHtml(name,temp,emoji,country,newDate,wind,description);
   const weatherContainer=document.querySelector("#weather-container");
   weatherContainer.innerHTML=cardHtml;

@@ -13,15 +13,14 @@
 <body>
     <div class="container mt-3">
         <h1>Weather Now</h1> 
-
     <form id="newCity" name="myForm">
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text">City</span>
-            <input type="text" class="form-control" id="cityName" id="validationCustom03" placeholder="City" required>
-    <div class="invalid-feedback">
-        Please provide valid city.
-    </div>
+            <input pattern="[a-zA-Z]+" type="text" maxlength="10" class="form-control" id="cityName" id="validationCustom03" placeholder="Enter a valid city name" required>
+            <div class=invalid-feedback>
+            Please provide valid city.
+            </div>
             <div class="button">
                     <input type="submit" class="btn btn-info" value="Submit">
                 </div>
